@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daniel's Gaming Space</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #10111a;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background: #191b29;
+  padding: 22px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #303348;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+  color: #65a5ff;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.hero {
+  padding: 55px 6%;
+  background: linear-gradient(120deg,#192c50,#25204b);
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #c5cbe0;
+}
+
+main {
+  padding: 30px 6%;
+}
+
+.search {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #393e55;
+  background: #1b1d2b;
+  color: white;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(190px,1fr));
+  gap: 20px;
+}
+
+.game {
+  background: #1b1d2b;
+  border: 1px solid #303348;
+  border-radius: 13px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.game:hover {
+  transform: translateY(-5px);
+  border-color: #65a5ff;
+}
+
+.game img {
+  width: 100%;
+  height: 135px;
+  object-fit: cover;
+}
+
+.game h3 {
+  padding: 0 14px;
+}
+
+.game button {
+  margin: 0 14px 15px;
+  padding: 10px 18px;
+  background: #3478ed;
+  color: white;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+#player {
+  display: none;
+  margin-top: 35px;
+}
+
+#player iframe {
+  width: 100%;
+  height: 650px;
+  border: 0;
+  border-radius: 12px;
+  background: black;
+}
+
+#close {
+  padding: 10px 20px;
+  background: #df4545;
+  color: white;
+  border: 0;
+  border-radius: 7px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+footer {
+  padding: 30px;
+  text-align: center;
+  color: #9298aa;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🎮 Daniel's Gaming Space</div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#games">Games</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Welcome to Gaming Space</h1>
+  <p>Discover games. Play anytime. Have fun.</p>
+</section>
+
+<main>
+  <input
+    class="search"
+    id="search"
+    placeholder="🔎 Search games..."
+    oninput="searchGames()"
+  >
+
+  <h2 id="games">🔥 Popular Games</h2>
+
+  <div class="games" id="gameList">
+
+    <div class="game" data-name="Basketball Star"
+      onclick="playGame('https://basketballstarsonline1.github.io/file/')">
+      <img src="https://placehold.co/400x250/202b48/ffffff?text=Basketball+Star">
+      <h3>Basketball Star</h3>
+      <button>Play Now</button>
+    </div>
+
+  </div>
+
+  <section id="player">
+    <h2 id="gameTitle">Now Playing</h2>
+    <button id="close" onclick="closeGame()">✕ Close Game</button>
+    <iframe id="gameFrame" allowfullscreen></iframe>
+  </section>
+</main>
+
+<footer>
+  Created by Daniel Aranbaev
+</footer>
+
+<script>
+function playGame(url) {
+  document.getElementById("player").style.display = "block";
+  document.getElementById("gameFrame").src = url;
+  document.getElementById("player").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function closeGame() {
+  document.getElementById("gameFrame").src = "";
+  document.getElementById("player").style.display = "none";
+}
+
+function searchGames() {
+  const query = document.getElementById("search").value.toLowerCase();
+
+  document.querySelectorAll(".game").forEach(game => {
+    game.style.display =
+      game.dataset.name.toLowerCase().includes(query) ? "" : "none";
+  });
+}
+</script>
+
+</body>
+</html>
