@@ -3,13 +3,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Daniel's Gaming Space</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -19,18 +17,17 @@ body {
 }
 
 header {
-  background: #141c32;
+  background: #151e33;
   padding: 20px 6%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 15px;
-  border-bottom: 1px solid #293653;
+  gap: 12px;
 }
 
 .logo {
-  font-size: 24px;
+  font-size: 23px;
   font-weight: bold;
   color: #65a5ff;
 }
@@ -38,152 +35,130 @@ header {
 nav a {
   color: white;
   text-decoration: none;
-  margin-left: 18px;
-}
-
-nav a:hover {
-  color: #65a5ff;
+  margin-left: 15px;
 }
 
 .hero {
-  padding: 65px 6%;
+  padding: 55px 6%;
   background: linear-gradient(120deg,#172c50,#29205a);
 }
 
-.hero h1 {
-  font-size: clamp(32px,5vw,52px);
-  margin: 0 0 12px;
-}
-
-.hero p {
-  color: #c3cce3;
-  font-size: 17px;
-}
+.hero h1 { font-size: 42px; }
 
 main {
-  padding: 35px 6%;
-  max-width: 1500px;
+  max-width: 1400px;
   margin: auto;
+  padding: 35px 6%;
 }
 
 .search {
   width: 100%;
-  padding: 17px;
-  border-radius: 12px;
-  border: 1px solid #344364;
+  padding: 16px;
+  border-radius: 10px;
   background: #172139;
+  border: 1px solid #344364;
   color: white;
   font-size: 16px;
-  margin-bottom: 35px;
-  outline: none;
-}
-
-.search:focus {
-  border-color: #65a5ff;
-}
-
-.section-title {
-  margin: 25px 0 20px;
-  font-size: 25px;
+  margin-bottom: 30px;
 }
 
 .games {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-  gap: 22px;
+  gap: 20px;
 }
 
 .game {
-  background: #151e33;
-  border: 1px solid #293653;
-  border-radius: 15px;
+  background: #172139;
+  border: 1px solid #30405f;
+  border-radius: 13px;
   overflow: hidden;
   transition: .2s;
 }
 
 .game:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   border-color: #65a5ff;
-  box-shadow: 0 8px 25px #0006;
 }
 
-.game-art {
-  height: 155px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.art {
+  height: 145px;
+  display: grid;
+  place-items: center;
   font-size: 65px;
-  background: linear-gradient(135deg,#243e69,#34265e);
+  background: linear-gradient(135deg,#263f6c,#39245e);
 }
 
-.game-info {
-  padding: 16px;
+.info { padding: 16px; }
+
+.info h3 { margin-top: 0; }
+
+.info p {
+  color: #aab6d0;
+  min-height: 38px;
+  font-size: 14px;
 }
 
-.game-info h3 {
-  margin: 0 0 8px;
-  font-size: 20px;
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 18px;
+  color: white;
+  background: #347cf2;
+  font-weight: bold;
 }
 
-.game-info p {
+button:hover { background: #5796ff; }
+
+#player {
+  display: none;
+  margin-top: 35px;
+  background: #151e33;
+  padding: 18px;
+  border-radius: 15px;
+}
+
+.player-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+#gameFrame {
+  width: 100%;
+  height: 650px;
+  border: 0;
+  border-radius: 10px;
+  background: #000;
+}
+
+#message {
   color: #aab6d0;
   font-size: 14px;
-  min-height: 36px;
+  line-height: 1.6;
 }
 
-.play {
-  display: inline-block;
-  background: #347cf2;
-  color: white;
-  text-decoration: none;
-  padding: 11px 19px;
-  border-radius: 8px;
-  font-weight: bold;
-  margin-top: 8px;
-}
-
-.play:hover {
-  background: #5796ff;
-}
-
-.tag {
-  display: inline-block;
-  background: #263c60;
-  color: #9dc4ff;
-  padding: 5px 9px;
-  border-radius: 20px;
-  font-size: 12px;
-}
-
-.empty {
+#empty {
   display: none;
   color: #aab6d0;
-  padding: 20px 0;
 }
 
 footer {
-  background: #141c32;
-  border-top: 1px solid #293653;
-  padding: 30px;
   text-align: center;
+  padding: 30px;
   color: #9ba9c5;
+  background: #151e33;
   margin-top: 50px;
 }
 
 @media(max-width:600px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  nav a {
-    margin-left: 0;
-    margin-right: 15px;
-  }
-
-  .hero {
-    padding: 45px 6%;
-  }
+  header { flex-direction: column; align-items: flex-start; }
+  nav a { margin-left: 0; margin-right: 12px; }
+  #gameFrame { height: 480px; }
 }
 </style>
 </head>
@@ -192,121 +167,148 @@ footer {
 
 <header>
   <div class="logo">🎮 Daniel's Gaming Space</div>
-
   <nav>
     <a href="#home">Home</a>
-    <a href="#popular">Popular Games</a>
-    <a href="#allgames">All Games</a>
+    <a href="#games">Games</a>
   </nav>
 </header>
 
 <section class="hero" id="home">
-  <h1>Your Gaming Destination.</h1>
-  <p>Discover games, compete, and have fun.</p>
-  <p>Welcome to Daniel's Gaming Space!</p>
+  <h1>Welcome to Gaming Space!</h1>
+  <p>Your games. Your space. Your fun.</p>
+  <p>Created by Daniel Aranbaev</p>
 </section>
 
 <main>
 
-  <input
-    class="search"
-    id="search"
-    type="text"
-    placeholder="🔎 Search for a game..."
-    oninput="searchGames()"
-  >
+<input
+  class="search"
+  id="search"
+  placeholder="🔎 Search games..."
+  oninput="searchGames()"
+>
 
-  <h2 class="section-title" id="popular">🔥 Popular Games</h2>
+<h2 id="games">🔥 Popular Games</h2>
 
-  <div class="games" id="gameList">
+<div class="games" id="gameList">
 
-    <!-- Subway Surfers -->
-    <article class="game" data-name="subway surfers">
-      <div class="game-art">🚆</div>
-      <div class="game-info">
-        <span class="tag">Endless Runner</span>
-        <h3>Subway Surfers</h3>
-        <p>Run, jump, dodge obstacles, and collect coins!</p>
-        <a class="play"
-           href="https://poki.com/en/g/subway-surfers"
-           target="_blank" rel="noopener">
-           Play Now →
-        </a>
-      </div>
-    </article>
-
-    <!-- Retro Bowl -->
-    <article class="game" data-name="retro bowl football">
-      <div class="game-art">🏈</div>
-      <div class="game-info">
-        <span class="tag">Sports</span>
-        <h3>Retro Bowl</h3>
-        <p>Build your football team and compete. Check for Exhibition mode for local two-player games.</p>
-        <a class="play"
-           href="https://poki.com/en/g/retro-bowl"
-           target="_blank" rel="noopener">
-           Play Now →
-        </a>
-      </div>
-    </article>
-
-    <!-- Basketball Stars -->
-    <article class="game" data-name="basketball stars basketball">
-      <div class="game-art">🏀</div>
-      <div class="game-info">
-        <span class="tag">Basketball</span>
-        <h3>Basketball Stars</h3>
-        <p>Play basketball and compete against opponents.</p>
-        <a class="play"
-           href="https://basketballstarsonline1.github.io/"
-           target="_blank" rel="noopener">
-           Play Now →
-        </a>
-      </div>
-    </article>
-
-    <!-- More games can be added here -->
-
+  <div class="game" data-name="subway surfers">
+    <div class="art">🚆</div>
+    <div class="info">
+      <h3>Subway Surfers</h3>
+      <p>Run, jump, dodge obstacles and collect coins!</p>
+      <button onclick="playGame(
+        'Subway Surfers',
+        'https://poki.com/en/g/subway-surfers'
+      )">▶ Play Now</button>
+    </div>
   </div>
 
-  <p class="empty" id="empty">
-    No games found. Try another search!
+  <div class="game" data-name="retro bowl football">
+    <div class="art">🏈</div>
+    <div class="info">
+      <h3>Retro Bowl</h3>
+      <p>Football, Career Mode and Exhibition gameplay.</p>
+      <button onclick="playGame(
+        'Retro Bowl',
+        'https://poki.com/en/g/retro-bowl'
+      )">▶ Play Now</button>
+    </div>
+  </div>
+
+  <div class="game" data-name="basketball stars">
+    <div class="art">🏀</div>
+    <div class="info">
+      <h3>Basketball Stars</h3>
+      <p>Play basketball and compete against opponents!</p>
+      <button onclick="playGame(
+        'Basketball Stars',
+        'https://basketballstarsonline1.github.io/'
+      )">▶ Play Now</button>
+    </div>
+  </div>
+
+</div>
+
+<p id="empty">No games found!</p>
+
+<section id="player">
+
+  <div class="player-top">
+    <h2 id="gameTitle">Now Playing</h2>
+
+    <div>
+      <button onclick="fullscreenGame()">⛶ Fullscreen</button>
+      <button onclick="closeGame()" style="background:#d74747">
+        ✕ Back to Games
+      </button>
+    </div>
+  </div>
+
+  <iframe
+    id="gameFrame"
+    allow="fullscreen; autoplay; gamepad"
+    allowfullscreen>
+  </iframe>
+
+  <p id="message">
+    The game is loading inside your website.
+    If it doesn't appear, its hosting website may block embedding.
   </p>
 
-  <h2 class="section-title" id="allgames">🎮 All Games</h2>
-  <p style="color:#aab6d0">
-    Browse the collection above. More games coming soon!
-  </p>
+</section>
 
 </main>
 
 <footer>
   <h3>🎮 Daniel's Gaming Space</h3>
   <p>Created by Daniel Aranbaev</p>
-  <p>Made for gamers. Built with code.</p>
 </footer>
 
 <script>
+function playGame(name, url) {
+  const player = document.getElementById("player");
+  const frame = document.getElementById("gameFrame");
+
+  document.getElementById("gameTitle").textContent = name;
+  document.getElementById("message").textContent =
+    "Loading " + name + " inside Daniel's Gaming Space...";
+
+  player.style.display = "block";
+  frame.src = url;
+
+  player.scrollIntoView({ behavior: "smooth" });
+}
+
+function closeGame() {
+  const frame = document.getElementById("gameFrame");
+  frame.src = "";
+  document.getElementById("player").style.display = "none";
+}
+
+function fullscreenGame() {
+  const frame = document.getElementById("gameFrame");
+
+  if (frame.requestFullscreen) {
+    frame.requestFullscreen();
+  }
+}
+
 function searchGames() {
-  const query = document
-    .getElementById("search")
-    .value.toLowerCase()
-    .trim();
+  const query = document.getElementById("search")
+    .value.toLowerCase();
 
   const games = document.querySelectorAll(".game");
-  let visible = 0;
+  let count = 0;
 
   games.forEach(game => {
-    const name = game.dataset.name.toLowerCase();
-    const show = name.includes(query);
-
-    game.style.display = show ? "" : "none";
-
-    if (show) visible++;
+    const matches = game.dataset.name.includes(query);
+    game.style.display = matches ? "" : "none";
+    if (matches) count++;
   });
 
   document.getElementById("empty").style.display =
-    visible === 0 ? "block" : "none";
+    count === 0 ? "block" : "none";
 }
 </script>
 
